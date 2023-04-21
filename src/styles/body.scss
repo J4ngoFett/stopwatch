@@ -1,0 +1,96 @@
+
+html {
+    height: 100%;
+    background-color: #333;
+    font-family: sans-serif;
+}
+
+body {
+    min-height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stopwatch {
+    background-color: yellow;
+    border-radius: 40px;
+    padding: 25px;
+    max-width: 400px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &-display {
+        flex: 0 0 auto;
+        text-align: end;
+        font-family: monospace;
+        font-size: 4em;
+        border-radius: 15px;
+        background-color: #333;
+        color: white;
+        padding: 0 10px;
+    }
+
+    &-actions {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-columns: auto;
+        gap: 10px;
+
+        button {
+            border-radius: 10px;
+            font-size: 2em;
+            border: 1px solid white;
+            background-color: black;
+            color: white;
+
+            &:disabled {
+                opacity: 0.7;
+            }
+            &:not(:disabled) {
+                @media screen and (hover: hover) {
+                    &:hover {
+                        background-color: orange;
+
+                    }
+                }
+
+                &:active {
+                    background-color: blue;
+
+                }
+            }
+        }
+    }
+
+    &-history {
+        background-color: black;
+        color: white;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        border-radius: 15px;
+
+        &:empty::before {
+            content: "Нет сохранённых результатов";
+            text-align: center;
+            padding: 20px;
+            display: block;
+        }
+        &:not(empty) {
+            padding: 20px;
+        }
+
+        li {
+            font-family: monospace;
+
+            &:not(:last-of-type) {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
